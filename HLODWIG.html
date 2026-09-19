@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mandro — Digital Designer</title>
+<title>HLODWIG'S PORTFOLIO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Bonheur+Royale&display=swap" rel="stylesheet">
@@ -30,7 +30,10 @@ body{
   background:var(--bg);
   line-height:1.5;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
+
+html { overflow-x: hidden; }
 img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
 ul{ list-style:none; }
@@ -216,11 +219,19 @@ h1,h2,h3,h4{ font-family:var(--font-h); font-weight:800; letter-spacing:-.02em; 
 .ph-shoe{ background:linear-gradient(135deg,#7a8f6a,#4c5b40); }
 .ph-bag{ background:linear-gradient(135deg,#e79a52,#c96a2f); }
 
-/* ---------- Logos strip ---------- */
+:root {
+  --logos-bg: #f6f7f9;
+  --logos-ink: #1c1e22;
+  --logos-muted: #6a7280;
+  --logos-gap: 108px;
+  --logos-duration: 55s;
+}
+
 .logos-strip{
   padding-block: 2.2rem;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  background: var(--logos-bg);
 }
 
 .logos-caption{
@@ -232,62 +243,52 @@ h1,h2,h3,h4{ font-family:var(--font-h); font-weight:800; letter-spacing:-.02em; 
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.02em;
-  color: #141414;
+  color: var(--logos-ink);
 }
 
 .logos-marquee{
-  overflow: hidden;
   width: 100%;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  max-width: 100%;
+  overflow: hidden;
+  margin-left: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 
 .logos-track{
   display: flex;
   width: max-content;
-  animation: logos-scroll 22s linear infinite;
+  animation: logos-scroll var(--logos-duration) linear infinite;
 }
 
-.logos-group{
+.logos-marquee:hover .logos-track,
+.logos-marquee:focus-within .logos-track { animation-play-state: paused; }
+
+.logos-group {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
-  justify-content: space-between;
-  gap: 9rem;
-  padding-inline: 4.5rem;
+  gap: var(--logos-gap);
+  margin: 0;
+  padding: 18px var(--logos-gap) 18px 0;
+  list-style: none;
 }
 
-.logo-brand{
-  display: flex;
-  align-items: center;
-  gap: .65rem;
-  flex-shrink: 0;
+.logos-group li { display: flex; align-items: center; flex: none; }
+.logos-group svg { display: block; overflow: visible; }
+
+@keyframes logos-scroll {
+  to { transform: translateX(-50%); }
 }
 
-.logo-brand span{
-  font-family: var(--font-h);
-  font-weight: 700;
-  color: var(--muted);
-  font-size: 1.1rem;
+@media (prefers-reduced-motion: reduce) {
+  .logos-track { animation: none; }
+  .logos-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .logos-group[aria-hidden="true"] { display: none; }
+  .logos-group { padding-left: var(--logos-gap); }
 }
 
-.logos-marquee:hover .logos-track{
-  animation-play-state: paused;
-}
-
-@keyframes logos-scroll{
-  from{ transform: translateX(0); }
-  to{ transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .logos-track{ animation: none; }
-  .reveal-on-scroll,
-  .reveal-on-scroll.is-visible{
-    opacity:1;
-    transform:none;
-    transition:none;
-  }
+@media (max-width: 600px) {
+  :root { --logos-gap: 56px; }
 }
 
 /* ---------- Approach ---------- */
@@ -704,6 +705,13 @@ h1,h2,h3,h4{ font-family:var(--font-h); font-weight:800; letter-spacing:-.02em; 
 
 
 <!-- ============ PROJECT ============ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Bento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
   :root{
     --line: rgba(0,0,0,.1);
@@ -806,6 +814,8 @@ h1,h2,h3,h4{ font-family:var(--font-h); font-weight:800; letter-spacing:-.02em; 
     }
   }
 </style>
+</head>
+<body>
 
 <section class="project-showcase" id="projects">
   <div class="section-tag-row">
@@ -880,42 +890,62 @@ h1,h2,h3,h4{ font-family:var(--font-h); font-weight:800; letter-spacing:-.02em; 
   }, { once: true });
 </script>
 
-<!-- ============ CLIENT LOGOS ============ -->
 <section class="section logos-strip">
   <div class="logos-caption">Trained and certified on Figma, Cisco, and Google platforms.<br>Bringing verified, industry-recognized skills to every project I build.</div>
-  <div class="logos-marquee">
-    <div class="logos-track">
-      <div class="logos-group">
-        <span class="logo-brand">
-          <svg viewBox="0 0 24 24" width="26" height="26"><path fill="#0ACF83" d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4Z"/><path fill="#A259FF" d="M4 12c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4Z"/><path fill="#F24E1E" d="M4 4c0-2.2 1.8-4 4-4h4v8H8C5.8 8 4 6.2 4 4Z"/><path fill="#FF7262" d="M12 0h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4V0Z"/><path fill="#1ABCFE" d="M20 12c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4Z"/></svg>
-          <span>Figma</span>
-        </span>
-        <span class="logo-brand">
-          <svg viewBox="0 0 24 24" width="26" height="26"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.4H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.7Z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.1-4 1.1-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1C3.3 21.3 7.3 24 12 24Z"/><path fill="#FBBC05" d="M5.4 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3V6.6H1.4C.5 8.3 0 10.1 0 12s.5 3.7 1.4 5.4l4-3.1Z"/><path fill="#EA4335" d="M12 4.7c1.7 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.3 0 3.3 2.7 1.4 6.6l4 3.1c.9-2.8 3.5-4.9 6.6-5Z"/></svg>
-          <span>Google</span>
-        </span>
-        <span class="logo-brand">
-          <svg viewBox="0 0 24 24" width="26" height="26"><g fill="#049FD9"><rect x="1" y="10" width="2" height="4"/><rect x="5" y="7" width="2" height="10"/><rect x="9" y="4" width="2" height="16"/><rect x="13" y="7" width="2" height="10"/><rect x="17" y="10" width="2" height="4"/><rect x="21" y="10" width="2" height="4"/></g></svg>
-          <span>Cisco</span>
-        </span>
-      </div>
-      <div class="logos-group" aria-hidden="true">
-        <span class="logo-brand">
-          <svg viewBox="0 0 24 24" width="26" height="26"><path fill="#0ACF83" d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4Z"/><path fill="#A259FF" d="M4 12c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4Z"/><path fill="#F24E1E" d="M4 4c0-2.2 1.8-4 4-4h4v8H8C5.8 8 4 6.2 4 4Z"/><path fill="#FF7262" d="M12 0h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4V0Z"/><path fill="#1ABCFE" d="M20 12c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4Z"/></svg>
-          <span>Figma</span>
-        </span>
-        <span class="logo-brand">
-          <svg viewBox="0 0 24 24" width="26" height="26"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.4H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.7Z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 7.9-2.9l-3.9-3c-1.1.7-2.4 1.1-4 1.1-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1C3.3 21.3 7.3 24 12 24Z"/><path fill="#FBBC05" d="M5.4 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3V6.6H1.4C.5 8.3 0 10.1 0 12s.5 3.7 1.4 5.4l4-3.1Z"/><path fill="#EA4335" d="M12 4.7c1.7 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.3 0 3.3 2.7 1.4 6.6l4 3.1c.9-2.8 3.5-4.9 6.6-5Z"/></svg>
-          <span>Google</span>
-        </span>
-        <span class="logo-brand">
-          <svg viewBox="0 0 24 24" width="26" height="26"><g fill="#049FD9"><rect x="1" y="10" width="2" height="4"/><rect x="5" y="7" width="2" height="10"/><rect x="9" y="4" width="2" height="16"/><rect x="13" y="7" width="2" height="10"/><rect x="17" y="10" width="2" height="4"/><rect x="21" y="10" width="2" height="4"/></g></svg>
-          <span>Cisco</span>
-        </span>
-      </div>
-    </div>
+  <div class="logos-marquee" role="region" aria-label="Logos Cisco, Google et Figma" tabindex="0">
+    <div class="logos-track" id="logosTrack"></div>
   </div>
 </section>
+
+<script>
+  var FONT = 'font-family="Outfit, system-ui, sans-serif"';
+
+  var LOGOS = [
+    {
+      label: 'Cisco', w: 154, h: 72, height: 46,
+      svg: (function () {
+        var heights = [12, 18, 26, 18, 32, 18, 26, 18, 12];
+        var bars = heights.map(function (bh, i) {
+          return '<rect x="' + (10 + i * 14) + '" y="' + (20 - bh / 2) + '" width="7" height="' + bh + '" rx="3" fill="#049fd9"/>';
+        }).join('');
+        return bars + '<text x="10" y="54" ' + FONT + ' font-size="24" font-weight="700" fill="#049fd9" textLength="114" lengthAdjust="spacing">CISCO</text>';
+      })()
+    },
+    {
+      label: 'Google', w: 160, h: 60, height: 36,
+      svg:
+        '<text x="6" y="35" ' + FONT + ' font-size="36" font-weight="500" textLength="120" lengthAdjust="spacingAndGlyphs">' +
+        '<tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC05">o</tspan>' +
+        '<tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e</tspan></text>'
+    },
+    {
+      label: 'Figma', w: 178, h: 57, height: 36,
+      svg:
+        '<path d="M18 22.5a9 9 0 1 1 18 0 9 9 0 0 1-18 0z" fill="#1ABCFE"/>' +
+        '<path d="M0 33.5A9 9 0 0 1 9 24.5H18v9a9 9 0 1 1-18 0z" fill="#0ACF83"/>' +
+        '<path d="M18 0v18h9a9 9 0 1 0 0-18H18z" fill="#FF7262"/>' +
+        '<path d="M0 9A9 9 0 0 0 9 18H18V0H9A9 9 0 0 0 0 9z" fill="#F24E1E"/>' +
+        '<path d="M0 22.5A9 9 0 0 0 9 31.5H18V13.5H9A9 9 0 0 0 0 22.5z" fill="#A259FF"/>' +
+        '<text x="50" y="34" ' + FONT + ' font-size="32" font-weight="600" fill="var(--ink)" textLength="94" lengthAdjust="spacingAndGlyphs">Figma</text>'
+    }
+  ];
+
+  function logoItem(l) {
+    var width = Math.round(l.height * l.w / l.h);
+    return '<li><svg width="' + width + '" height="' + l.height + '" viewBox="0 0 ' + l.w + ' ' + l.h + '" role="img" aria-label="' + l.label + '">' + l.svg + '</svg></li>';
+  }
+
+  function makeGroup(hidden) {
+    var items = '';
+    for (var r = 0; r < 3; r++) items += LOGOS.map(logoItem).join('');
+    return '<ul class="logos-group"' + (hidden ? ' aria-hidden="true"' : '') + '>' + items + '</ul>';
+  }
+
+  document.getElementById('logosTrack').innerHTML = makeGroup(false) + makeGroup(true);
+</script>
+
+</body>
+</html>
 
 <!-- ============ REVIEW FORM ============ -->
 <section class="section expertise soft-bg" id="reviews">
@@ -962,6 +992,13 @@ h1,h2,h3,h4{ font-family:var(--font-h); font-weight:800; letter-spacing:-.02em; 
           <a href="mailto:loicodovi@gmail.com" class="contact-link" aria-label="Email — loicodovi@gmail.com" title="loicodovi@gmail.com">
             <span class="contact-link-ic">
               <svg viewBox="0 0 48 36" width="30" height="30"><path fill="#4285F4" d="M3 6h42a3 3 0 0 1 3 3v21a3 3 0 0 1-3 3h-4V13.5L24 24.5 7 13.5V33H3a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3Z"/><path fill="#EA4335" d="M0 9a3 3 0 0 1 3-3h4v27.5l-7-4.7V9Z"/><path fill="#34A853" d="M48 9a3 3 0 0 0-3-3h-4v27.5l7-4.7V9Z"/><path fill="#FBBC04" d="M0 9c0-1.7 1.4-3 3-3 .6 0 1.2.2 1.7.5L24 20.6 43.3 6.5c.5-.3 1.1-.5 1.7-.5 1.6 0 3 1.3 3 3l-24 17.5L0 9Z"/></svg>
+            </span>
+          </a>
+          <a href="https://www.linkedin.com/in/lo%C3%AFc-odovi-986856333?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" class="contact-link" aria-label="LinkedIn" title="LinkedIn profile">
+            <span class="contact-link-ic">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" role="img" aria-label="LinkedIn" style="background:#fff;border-radius:7%;display:block">
+                <path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
             </span>
           </a>
           <a href="https://github.com/loic419" target="_blank" rel="noopener" class="contact-link" aria-label="GitHub — loic419" title="github.com/loic419">
