@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HLODWIG'S PORTFOLIO</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Bonheur+Royale&display=swap" rel="stylesheet">
@@ -72,6 +73,12 @@ h1,h2,h3,h4{ font-family:var(--font-h); font-weight:800; letter-spacing:-.02em; 
 }
 .btn-cta{ background:var(--soft); color:var(--ink); }
 .btn-cta:hover{ background:var(--line); }
+.btn-cta .btn-ic{ display:inline-flex; align-items:center; justify-content:center; flex:0 0 1.9rem; }
+.btn-cta .btn-ic svg{
+  display:block; width:15px; height:15px;
+  fill:none; stroke:currentColor; stroke-width:1.8;
+  stroke-linecap:round; stroke-linejoin:round;
+}
 .btn-outline-light{
   border-color:rgba(0,0,0,.15);
   color:#000;
@@ -79,7 +86,15 @@ h1,h2,h3,h4{ font-family:var(--font-h); font-weight:800; letter-spacing:-.02em; 
   padding:.5rem 1.4rem .5rem .5rem;
   flex-direction:row-reverse;
 }
-.btn-outline-light .btn-ic{ background:#000; color:#fff; }
+.btn-outline-light .btn-ic{
+  display:inline-flex; align-items:center; justify-content:center; flex:0 0 1.9rem;
+  background:#000; color:#fff;
+}
+.btn-outline-light .btn-ic svg{
+  display:block; width:15px; height:15px;
+  fill:none; stroke:currentColor; stroke-width:1.8;
+  stroke-linecap:round; stroke-linejoin:round;
+}
 .btn-dark{ background:var(--dark); color:#fff; padding-left:1.3rem; }
 .btn-dark .ic-down{
   display:inline-flex; align-items:center; justify-content:center;
@@ -631,7 +646,7 @@ h1,h2,h3,h4{ font-family:var(--font-h); font-weight:800; letter-spacing:-.02em; 
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
     </nav>
-    <a href="#contact" class="btn btn-outline-light"><span class="btn-ic">→</span> Get in touch</a>
+    <a href="#contact" class="btn btn-outline-light"><span class="btn-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span> Get in touch</a>
   </div>
 </header>
 
@@ -667,8 +682,8 @@ h1,h2,h3,h4{ font-family:var(--font-h); font-weight:800; letter-spacing:-.02em; 
     </div>
     <div class="intro-grid" style="grid-template-columns:1fr;">
       <div>
-        <h1 class="intro-heading" style="text-align:center;">Second-year Computer Systems and Network student at the Higher School of Management, Computer Science and Sciences (ESGIS). Passionate about computer networks and always eager to expand my knowledge, I am also deeply interested in creating immersive and engaging visual experiences. I enjoy combining technology, creativity, and innovation to design impactful digital experiences.</h1>
-        <a href="#contact" class="btn btn-cta"><span class="btn-ic">→</span> Get in touch</a>
+        <h1 class="intro-heading" style="text-align:center;">Third-year Computer Systems and Network student at the Higher School of Management, Computer Science and Sciences (ESGIS). Passionate about computer networks and always eager to expand my knowledge, I am also deeply interested in creating immersive and engaging visual experiences. I enjoy combining technology, creativity, and innovation to design impactful digital experiences.</h1>
+        <a href="#contact" class="btn btn-cta"><span class="btn-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span> Get in touch</a>
       </div>
     </div>
   </div>
